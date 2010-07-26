@@ -1,0 +1,9 @@
+= Mongobacker 
+command line tool to backup and restore mongoDB databases using s3 
+
+== Installation
+
+tbd
+
+== Setup
+tbd 
