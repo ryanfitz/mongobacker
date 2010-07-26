@@ -1,6 +1,8 @@
 = Mongobacker 
 command line tool to backup and restore mongoDB databases using s3 
 
+mongobacker is currently in very early development and at this time is not usable
+
 == Installation
 
 tbd
