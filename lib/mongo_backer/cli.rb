@@ -18,12 +18,10 @@ module MongoBacker
     
     desc "setup", "create new configuration file"
     def setup
-      @config = MongoBacker::Configuration.new
-      
-      @config.host = ask_with_default("mongo host: ", "localhost")
-      @config.port = ask_with_default("mongo port: ", "27017")
-      @config.access_key_id = ask("s3 access key id")
-      @config.secret_access_key = ask("s3 secret access key")
+      @host = ask_with_default("mongo host: ", "localhost")
+      @port = ask_with_default("mongo port: ", "27017")
+      @access_key_id = ask("s3 access key id")
+      @secret_access_key = ask("s3 secret access key")
       
       template('templates/config.tt', "configuration.yml")
     end

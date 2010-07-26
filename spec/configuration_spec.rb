@@ -14,5 +14,5 @@ describe MongoBacker::Configuration do
   it "raises exception when yaml file is not found" do
     lambda { MongoBacker::Configuration.new("i_dont_exist.yml") }.should raise_error(ArgumentError)
   end
-    
+
 end
