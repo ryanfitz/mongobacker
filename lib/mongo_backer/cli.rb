@@ -30,9 +30,9 @@ module MongoBacker
     
     desc "backup", "backup mongodb to s3"
     method_option :config, :type => :string, :aliases => "-c", :required => true,
-      :desc => "Path to mongo backer config file"
+                  :desc => "Path to mongo backer config file"
     def backup
-      puts "backup"
+
     end
     
     # def help

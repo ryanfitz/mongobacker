@@ -1,0 +1,7 @@
+mongo:
+  host: localhost
+  port: 27017
+
+s3:
+  access_key_id: 123
+  secret_access_key: asdf
