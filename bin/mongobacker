@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require 'rubygems' unless defined?(Gem)
+
+$:.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'mongo_backer'
+
+# We need our config boot because we need to load registered generators so:
+MongoBacker::Cli.start(ARGV)
