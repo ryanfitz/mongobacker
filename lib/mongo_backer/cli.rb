@@ -1,5 +1,4 @@
-require 'thor'
-require 'yaml'
+require 'tmpdir'
 
 module MongoBacker
   class Cli < Thor
@@ -21,8 +20,8 @@ module MongoBacker
       @host = ask_with_default("mongo host: ", "localhost")
       @port = ask_with_default("mongo port: ", "27017")
       @mongodump = ask_with_default("mongodump path: ", "/usr/bin/mongodump")
-      @access_key_id = ask("s3 access key id")
-      @secret_access_key = ask("s3 secret access key")
+      @access_key_id = ask("s3 access key id:")
+      @secret_access_key = ask("s3 secret access key:")
       
       template('templates/config.tt', "configuration.yml")
     end
@@ -31,13 +30,18 @@ module MongoBacker
     method_option :config, :type => :string, :aliases => "-c", :required => true,
                   :desc => "Path to mongo backer config file"
     def backup
-
+      config = MongoBacker::Configuration.new options[:config]
+      
+      backup_dir = run_mongodump(config)
+      
+      backup_file = gzip_directory(backup_dir)
+      
+      FileUtils.rm_rf backup_dir
     end
     
     # def help
     #   puts "helpppppp"
     # end
-    
   end
 
 end
