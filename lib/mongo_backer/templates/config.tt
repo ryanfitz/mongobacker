@@ -1,6 +1,7 @@
 mongo:
   host: <%= @host %>
   port: <%= @port %>
+  mongodump: <%= @mongodump %>
 
 s3:
   access_key_id: <%= @access_key_id %>

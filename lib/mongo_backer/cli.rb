@@ -20,6 +20,7 @@ module MongoBacker
     def setup
       @host = ask_with_default("mongo host: ", "localhost")
       @port = ask_with_default("mongo port: ", "27017")
+      @mongodump = ask_with_default("mongodump path: ", "/usr/bin/mongodump")
       @access_key_id = ask("s3 access key id")
       @secret_access_key = ask("s3 secret access key")
       

@@ -1,11 +1,12 @@
 module MongoBacker
   class Configuration
-    attr_accessor :host, :port, :access_key_id, :secret_access_key
+    attr_accessor :host, :port, :access_key_id, :secret_access_key, :mongodump
       
     def initialize(config_file)
       config = YAML.load_file(config_file)
       @host = config["mongo"]["host"]
       @port = config["mongo"]["port"]
+      @mongodump = config["mongo"]["mongodump"]
       @access_key_id = config["s3"]["access_key_id"]
       @secret_access_key = config["s3"]["secret_access_key"]
       

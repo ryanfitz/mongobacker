@@ -7,6 +7,7 @@ describe MongoBacker::Configuration do
   
     config.host.should eq "localhost"
     config.port.should eq 27017
+    config.mongodump.should eq "/usr/bin/mongodump"
     config.access_key_id.should eq 123
     config.secret_access_key.should eq "asdf"
   end
