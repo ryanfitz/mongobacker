@@ -28,5 +28,14 @@ module MongoBacker
       zip_file
     end
     
+    def upload_to_s3(file, config)
+      manager = MongoBacker::S3Manager.new config
+      # AWS::S3::Base.establish_connection!(
+      #     :access_key_id     => config.access_key_id,
+      #     :secret_access_key => config.secret_access_key
+      #   ) 
+        
+    end
+    
   end
 end
