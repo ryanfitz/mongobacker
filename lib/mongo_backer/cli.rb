@@ -36,9 +36,10 @@ module MongoBacker
       
       backup_file = gzip_directory(backup_dir)
       
-      upload_to_s3(backup_dir, config)
+      upload_to_s3(backup_file, config)
       
       FileUtils.rm_rf backup_dir
+      FileUtils.rm backup_file
     end
     
     # def help

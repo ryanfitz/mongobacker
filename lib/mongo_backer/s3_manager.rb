@@ -19,7 +19,16 @@ module MongoBacker
       else
         bucket = Bucket.create(bucket)
       end
-         
+    end
+    
+    def upload_file(file)
+      name = File.basename file
+      
+      puts "uploading file #{name} to bucket #{@bucket.name}"
+      
+      S3Object.store(name, open(file), @bucket.name)
+      
+      puts "finished uploading file"
     end
     
   end

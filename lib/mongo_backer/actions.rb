@@ -14,7 +14,7 @@ module MongoBacker
 
     def run_mongodump(config)
       time = Time.new.strftime("%Y_%m_%d_%H-%M-%S")
-      backup_dir = "#{Dir.tmpdir}/backup_#{time}"
+      backup_dir = "#{Dir.tmpdir}/mongodbump_#{time}"
       
       run("#{config.mongodump} -o #{backup_dir}")
       
@@ -30,11 +30,8 @@ module MongoBacker
     
     def upload_to_s3(file, config)
       manager = MongoBacker::S3Manager.new config
-      # AWS::S3::Base.establish_connection!(
-      #     :access_key_id     => config.access_key_id,
-      #     :secret_access_key => config.secret_access_key
-      #   ) 
-        
+      
+      manager.upload_file file
     end
     
   end
