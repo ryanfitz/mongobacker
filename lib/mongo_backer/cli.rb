@@ -42,6 +42,14 @@ module MongoBacker
       FileUtils.rm backup_file
     end
     
+    desc "list", "list backups currently in s3"
+    method_option :config, :type => :string, :aliases => "-c", :required => true,
+                  :desc => "Path to mongo backer config file"
+    def list
+      config = MongoBacker::Configuration.new options[:config]
+      list_backups config
+    end
+    
     # def help
     #   puts "helpppppp"
     # end
