@@ -14,6 +14,7 @@ describe MongoBacker::S3Manager do
   it "creates new s3 bucket" do
     mock_s3_bucket_exists "another_bucket"
     expects_creates_new_s3_bucket @config.bucket
+    expects_find_existing_bucket @config.bucket
     
     manager = MongoBacker::S3Manager.new @config
     manager.bucket.should eq @config.bucket

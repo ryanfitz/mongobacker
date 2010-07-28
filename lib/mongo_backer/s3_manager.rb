@@ -15,9 +15,10 @@ module MongoBacker
     
     def create_bucket(bucket)
       if Service.buckets.collect{ |b| b.name }.include?(bucket)
-        bucket = Bucket.find(bucket)
+        Bucket.find(bucket)
       else
-        bucket = Bucket.create(bucket)
+        Bucket.create(bucket)
+        Bucket.find(bucket)
       end
     end
     
