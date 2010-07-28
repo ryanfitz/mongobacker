@@ -22,6 +22,7 @@ module MongoBacker
       @mongodump = ask_with_default("mongodump path: ", "/usr/bin/mongodump")
       @access_key_id = ask("s3 access key id:")
       @secret_access_key = ask("s3 secret access key:")
+      @bucket = ask("s3 bucket:")
       
       template('templates/config.tt', "configuration.yml")
     end
