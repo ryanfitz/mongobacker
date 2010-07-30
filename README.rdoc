@@ -19,7 +19,7 @@ View a list of backups currently held in s3
   $ mongobacker list -c /path/to/mongobacker.yml
 
 == Upcoming Features
-Mongobacker is still very early in development, bugs are to be expected. Here is a short list of features I plan to implement for mongobacker.
+Mongobacker is still very early in development, bugs are to be expected. Here is a short list of features I plan to implement.
 
 === Delete old backups
 A configurable threshold which will delete backups that are older than the threshold.
