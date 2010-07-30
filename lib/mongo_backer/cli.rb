@@ -12,7 +12,7 @@ module MongoBacker
     map "-v" => "version"                                                                             
     desc "-v", "mongobacker version"
     def version()
-        puts "mongobacker version #{MongoBacker::VERSION::STRING}"
+        puts "mongobacker version #{MongoBacker::Version}"
     end
     
     desc "setup", "create new configuration file"
