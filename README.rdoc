@@ -27,3 +27,7 @@ A configurable threshold which will delete backups that are older than the thres
   
 === Restore MongoDB from backup
 Allow mongobacker to download a backup from s3 and use mongorestore with backup to restore the mongoDB instance.
+
+=== Split backup into smaller files
+S3 has a 5gig limit per object, if your database is larger than 5gigs compressed mongobacker, currently, will not work for you. It should split the backup into smaller
+pieces and upload them. For restore it should download and combine all the peices.
