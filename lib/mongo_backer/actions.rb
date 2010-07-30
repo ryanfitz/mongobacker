@@ -16,7 +16,7 @@ module MongoBacker
       time = Time.new.strftime("%Y_%m_%d_%H-%M-%S")
       backup_dir = "#{Dir.tmpdir}/mongodump_#{time}"
       
-      run("#{config.mongodump} -o #{backup_dir}")
+      run("#{config.mongodump} -h #{config.host}:#{config.port} -o #{backup_dir}")
       
       backup_dir
     end

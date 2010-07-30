@@ -8,15 +8,9 @@ module MongoBacker
     def self.source_root
       File.dirname(__FILE__)
     end
-     
-    map "-v" => "version"                                                                             
-    desc "-v", "mongobacker version"
-    def version()
-        puts "mongobacker version #{MongoBacker::Version}"
-    end
-    
-    desc "setup", "create new configuration file"
-    def setup
+                                                                              
+    desc "init", "Generates a configuration file into the current working directory"
+    def init
       @host = ask_with_default("mongo host: ", "localhost")
       @port = ask_with_default("mongo port: ", "27017")
       @mongodump = ask_with_default("mongodump path: ", "/usr/bin/mongodump")
@@ -24,10 +18,10 @@ module MongoBacker
       @secret_access_key = ask("s3 secret access key:")
       @bucket = ask("s3 bucket:")
       
-      template('templates/config.tt', "configuration.yml")
+      template('templates/config.tt', "mongobacker.yml")
     end
     
-    desc "backup", "backup mongodb to s3"
+    desc "backup", "backup the configured mongodb instance to s3"
     method_option :config, :type => :string, :aliases => "-c", :required => true,
                   :desc => "Path to mongo backer config file"
     def backup
@@ -43,12 +37,17 @@ module MongoBacker
       FileUtils.rm backup_file
     end
     
-    desc "list", "list backups currently in s3"
+    desc "list", "list the backups currently in s3"
     method_option :config, :type => :string, :aliases => "-c", :required => true,
                   :desc => "Path to mongo backer config file"
     def list
       config = MongoBacker::Configuration.new options[:config]
       list_backups config
+    end
+    
+    desc "version", "mongobacker version"
+    def version()
+        puts "mongobacker version #{MongoBacker::Version}"
     end
     
     # def help
