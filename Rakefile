@@ -17,8 +17,8 @@ begin
     
     gemspec.add_dependency('aws-s3', '>= 0.6.2')
     gemspec.add_dependency('thor', '>= 0.13.8')
-
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
 end
