@@ -1,11 +1,26 @@
 = Mongobacker 
-command line tool to backup and restore mongoDB databases using s3 
+Mongoback is a command line tool to backup mongoDB instances to s3. Its designed to be easily used with cron in order to easily automate backups.
 
-mongobacker is currently in very early development and at this time is not usable
+== Installation and Setup
+  $ gem install mongo_backer
+  $ mongobacker init
+  
+== Backups
+To create a backup simply run the following command:
+  $ mongobacker backup -c /path/to/mongobacker.yml
+  
+If all goes well a new backup of the configured mongodb instance will now be on s3.
 
-== Installation
+== List
+View a list of backups currently held in s3
+  $ mongobacker list -c /path/to/mongobacker.yml
 
-tbd
+== Upcoming Features
+Mongobacker is still very early in development, bugs are to be expected and here is a short list of things I wish mongobacker will do
 
-== Setup
-tbd 
+=== Delete old backups
+A configurable threshold which will delete backups that are older than the threshold.
+  $ mongobacker delete -c /path/to/mongobacker.yml
+  
+=== Restore MongoDB from backup
+Allow mongobacker to download a backup from s3 and use mongorestore with backup to restore the mongoDB instance.
